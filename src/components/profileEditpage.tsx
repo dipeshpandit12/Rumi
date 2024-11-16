@@ -38,7 +38,7 @@ const ProfileEditPage: React.FC = () => {
                 const statusResponse = await axios.get("https://rumi-backend-wvba.onrender.com/api/users/status");
                 const userId = statusResponse.data.userId;
                 setUserId(userId);
-                const profileResponse = await axios.get(`https://rumi-backend-wvba.onrender.com/api/profile/${userId}`);
+                const profileResponse = await axios.get(`https://rumi-backend-wvba.onrender.com/api/profile:${userId}`);
                 setProfile(profileResponse.data);
             } catch (error) {
                 console.error("Error fetching user profile:", error);
@@ -72,7 +72,7 @@ const ProfileEditPage: React.FC = () => {
         e.preventDefault();
         if (userId) {
             try {
-                await axios.put(`https://rumi-backend-wvba.onrender.com/api/profile/${userId}`, profile);
+                await axios.put(`https://rumi-backend-wvba.onrender.com/api/profile:${userId}`, profile);
                 console.log("Profile updated:", profile);
             } catch (error) {
                 console.error("Error updating profile:", error);
